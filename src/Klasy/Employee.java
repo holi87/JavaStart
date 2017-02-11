@@ -2,7 +2,7 @@ package Klasy;
 
 public class Employee {
 	String imie;
-	String staz;
+	String nazwisko;
 	int rokUrodzenia;
 	double stazPracy;
 }
