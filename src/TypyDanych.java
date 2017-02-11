@@ -8,7 +8,9 @@ public class TypyDanych {
 		System.out.println(poczatek + wiek + koniec);
 		Boolean prawda = true;
 		System.out.println("-" + prawda);
-		System.out.println("-Czy Twoje inicjały to " + 'J' + " " + 'K' + "?");
+		char inicjalImie = 'J';
+		char inicjalNazwisko = 'K';
+		System.out.println("-Czy Twoje inicjały to " + inicjalImie + " " + inicjalNazwisko + "?");
 		System.out.print("-Tak, " + prawda);
 	}
 
