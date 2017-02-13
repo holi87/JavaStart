@@ -2,7 +2,7 @@ package data;
 
 public class Biblioteka {
 
-	public final int maxKsiazki = 1000;
+	public static final int MAX_KSIAZKI = 1000;
 	private Ksiazka[] ksiazki;
 	private int numerKsiazki;
 
@@ -15,11 +15,11 @@ public class Biblioteka {
 	}
 
 	public Biblioteka() {
-		ksiazki = new Ksiazka[maxKsiazki];
+		ksiazki = new Ksiazka[MAX_KSIAZKI];
 	}
 
 	public void dodajKsiazke(Ksiazka ksiazka) {
-		if (numerKsiazki < maxKsiazki) {
+		if (numerKsiazki < MAX_KSIAZKI) {
 			ksiazki[numerKsiazki] = ksiazka;
 			numerKsiazki++;
 		} else {

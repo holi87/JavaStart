@@ -8,9 +8,9 @@ public class BibliotekaObsluga {
 
 	// stale do kontroli switcha
 
-	public final int wyjdz = 0;
-	public final int dodajKsiazke = 1;
-	public final int wyswietlKsiazki = 2;
+	public static final int WYJDZ = 0;
+	public static final int DODAJ_KSIAZKE = 1;
+	public static final int WYSWIETL_KSIAZKI = 2;
 
 	// zmienna do komunikacji z userem
 
@@ -30,12 +30,12 @@ public class BibliotekaObsluga {
 	public void petlaKontrolna() {
 		int opcja;
 		wyswietlOpcje();
-		while ((opcja = zczytywacz.getInt()) != wyjdz) {
+		while ((opcja = zczytywacz.getInt()) != WYJDZ) {
 			switch (opcja) {
-			case dodajKsiazke:
+			case DODAJ_KSIAZKE:
 				dodajKsiazki();
 				break;
-			case wyswietlKsiazki:
+			case WYSWIETL_KSIAZKI:
 				wyswietlKsiazki();
 				break;
 			default:
