@@ -1,20 +1,27 @@
 package utilis;
 
 import java.util.Scanner;
+
 import data.Ksiazka;
 
 public class DataReader {
 	private Scanner czytaj;
 
-	public DataReader(){
+	public DataReader() {
 		czytaj = new Scanner(System.in);
 	}
-	
-	public void zamknij(){
+
+	public void zamknij() {
 		czytaj.close();
 	}
-	
-	public Ksiazka zczytajOrazStworzKsiazke(){
+
+	public int getInt() {
+		int number = czytaj.nextInt();
+		czytaj.nextLine();
+		return number;
+	}
+
+	public Ksiazka zczytajOrazStworzKsiazke() {
 		System.out.println("Podaj tytuł: ");
 		String tytul = czytaj.nextLine();
 		System.out.println("Podaj autora: ");
@@ -29,7 +36,7 @@ public class DataReader {
 		String wydawca = czytaj.nextLine();
 		System.out.println("podaj ISBN: ");
 		String isbn = czytaj.nextLine();
-		
+
 		return new Ksiazka(tytul, autor, dataWydania, iloscStron, wydawca, isbn);
 	}
 
