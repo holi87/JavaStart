@@ -4,10 +4,10 @@ public class Biblioteka {
 
 	public static final int MAX_KSIAZKI = 1000;
 	public static final int MAX_MAGAZYNY = 1000;
-	
+
 	private Ksiazka[] ksiazki;
 	private Magazyn[] magazyny;
-	
+
 	private int numerKsiazki;
 	private int numerMagazynu;
 
@@ -18,7 +18,7 @@ public class Biblioteka {
 	public Ksiazka[] getKsiazki() {
 		return ksiazki;
 	}
-	
+
 	public int getNumerMagazynu() {
 		return numerMagazynu;
 	}
@@ -49,7 +49,7 @@ public class Biblioteka {
 			System.out.println("Maksymalna liczba magazynów została osiągnięta");
 		}
 	}
-	
+
 	public void wyswietlKsiazki() {
 		if (numerKsiazki == 0) {
 			System.out.println("Brak książek w bibliotece");

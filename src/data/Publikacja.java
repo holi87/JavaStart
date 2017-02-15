@@ -31,4 +31,10 @@ public class Publikacja {
 		return wydawca;
 	}
 
+	protected Publikacja(String tytul, String wydawca, int rokWydania) {
+		setTytul(tytul);
+		setWydawca(wydawca);
+		setRokWydania(rokWydania);
+
+	}
 }

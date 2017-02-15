@@ -14,8 +14,6 @@ public class BibliotekaObsluga {
 	public static final int DODAJ_MAGAZYN = 2;
 	public static final int WYSWIETL_KSIAZKI = 3;
 	public static final int WYSWIETL_MAGAZYNY = 4;
-	
-
 
 	// zmienna do komunikacji z userem
 
@@ -62,7 +60,7 @@ public class BibliotekaObsluga {
 		System.out.println("0 - wyjście z programu");
 		System.out.println("1 - dodanie nowej książki");
 		System.out.println("2 - dodanie nowego magazynu");
-		System.out.println("3 - wyświetl dostępne książki");	
+		System.out.println("3 - wyświetl dostępne książki");
 		System.out.println("4 - wyświetl dostępne magazyny");
 	}
 
@@ -76,7 +74,6 @@ public class BibliotekaObsluga {
 		biblio.dodajMagazyn(magazyn);
 	}
 
-	
 	private void wyswietlKsiazki() {
 		biblio.wyswietlKsiazki();
 	}

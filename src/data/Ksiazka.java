@@ -38,12 +38,10 @@ public class Ksiazka extends Publikacja {
 	// konstruktory
 	public Ksiazka(String ksiazkaTytul, String ksiazkaAutor, int ksiazkaRokWydania, int ksiazkaIloscStron,
 			String ksiazkaWydawca, String ksiazkaISBN) {
-		this.setTytul(ksiazkaTytul);
-		this.setAutor(ksiazkaAutor);
-		this.setRokWydania(ksiazkaRokWydania);
-		this.setIloscStron(ksiazkaIloscStron);
-		this.setWydawca(ksiazkaWydawca);
-		this.setISBN(ksiazkaISBN);
+		super(ksiazkaTytul, ksiazkaWydawca, ksiazkaRokWydania);
+		setAutor(ksiazkaAutor);
+		setIloscStron(ksiazkaIloscStron);
+		setISBN(ksiazkaISBN);
 	}
 
 	public Ksiazka(Ksiazka ksiazka) {
