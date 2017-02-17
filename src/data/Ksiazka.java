@@ -93,8 +93,19 @@ public class Ksiazka extends Publikacja {
 
 	@Override
 	public String toString() {
-		return getTytul() + "; " + getAutor() + "; " + getRokWydania() + "; " + getIloscStron() + "; " + getWydawca()
-				+ "; " + getISBN();
+		StringBuilder wyswietl = new StringBuilder(32);
+		wyswietl.append(getTytul());
+		wyswietl.append("; ");
+		wyswietl.append(getAutor());
+		wyswietl.append("; ");
+		wyswietl.append(getRokWydania());
+		wyswietl.append("; ");
+		wyswietl.append(getIloscStron());
+		wyswietl.append("; ");
+		wyswietl.append(getWydawca());
+		wyswietl.append("; ");
+		wyswietl.append(getISBN());
+		return wyswietl.toString();
 	}
 
 }

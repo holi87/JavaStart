@@ -78,8 +78,20 @@ public class Magazyn extends Publikacja {
 
 	@Override
 	public String toString() {
-		return getTytul() + "; " + getWydawca() + "; " + getRokWydania() + "; " + getMiesiacWydania() + "; "
-				+ getDzienWydania() + "; " + getJezyk();
+		StringBuilder wyswietl = new StringBuilder(32);
+		wyswietl.append(getTytul());
+		wyswietl.append("; ");
+		wyswietl.append(getWydawca());
+		wyswietl.append("; ");
+		wyswietl.append(getRokWydania());
+		wyswietl.append("; ");
+		wyswietl.append(getMiesiacWydania());
+		wyswietl.append("; ");
+		wyswietl.append(getDzienWydania());
+		wyswietl.append("; ");
+		wyswietl.append(getJezyk());
+		return wyswietl.toString();
+
 	}
 
 }
