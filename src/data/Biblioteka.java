@@ -55,7 +55,7 @@ public class Biblioteka {
 			System.out.println("Brak książek w bibliotece");
 		}
 		for (int i = 0; i < numerKsiazki; i++) {
-			ksiazki[i].printInfo();
+			System.out.println(ksiazki[i]);
 		}
 	}
 
@@ -64,7 +64,7 @@ public class Biblioteka {
 			System.out.println("Brak magazynów w bibliotece");
 		}
 		for (int i = 0; i < numerMagazynu; i++) {
-			magazyny[i].printInfo();
+			System.out.println(magazyny[i]);
 		}
 	}
 }

@@ -31,6 +31,44 @@ public class Magazyn extends Publikacja {
 		return jezyk;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + dzienWydania;
+		result = prime * result + ((jezyk == null) ? 0 : jezyk.hashCode());
+		result = prime * result + miesiacWydania;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Magazyn)) {
+			return false;
+		}
+		Magazyn other = (Magazyn) obj;
+		if (dzienWydania != other.dzienWydania) {
+			return false;
+		}
+		if (jezyk == null) {
+			if (other.jezyk != null) {
+				return false;
+			}
+		} else if (!jezyk.equals(other.jezyk)) {
+			return false;
+		}
+		if (miesiacWydania != other.miesiacWydania) {
+			return false;
+		}
+		return true;
+	}
+
 	public Magazyn(String tytul, String wydawca, String jezyk, int rokWydania, int miesiacWydania, int dzienWydania) {
 		super(tytul, wydawca, rokWydania);
 		setJezyk(jezyk);
@@ -38,10 +76,10 @@ public class Magazyn extends Publikacja {
 		setDzienWydania(dzienWydania);
 	}
 
-	public void printInfo() {
-		String info = getTytul() + "; " + getWydawca() + "; " + getRokWydania() + "; " + getMiesiacWydania() + "; "
+	@Override
+	public String toString() {
+		return getTytul() + "; " + getWydawca() + "; " + getRokWydania() + "; " + getMiesiacWydania() + "; "
 				+ getDzienWydania() + "; " + getJezyk();
-		System.out.println(info);
-
 	}
+
 }

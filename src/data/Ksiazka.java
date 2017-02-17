@@ -35,6 +35,48 @@ public class Ksiazka extends Publikacja {
 		return isbn;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((autor == null) ? 0 : autor.hashCode());
+		result = prime * result + iloscStron;
+		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Ksiazka other = (Ksiazka) obj;
+		if (autor == null) {
+			if (other.autor != null) {
+				return false;
+			}
+		} else if (!autor.equals(other.autor)) {
+			return false;
+		}
+		if (iloscStron != other.iloscStron) {
+			return false;
+		}
+		if (isbn == null) {
+			if (other.isbn != null) {
+				return false;
+			}
+		} else if (!isbn.equals(other.isbn)) {
+			return false;
+		}
+		return true;
+	}
+
 	// konstruktory
 	public Ksiazka(String ksiazkaTytul, String ksiazkaAutor, int ksiazkaRokWydania, int ksiazkaIloscStron,
 			String ksiazkaWydawca, String ksiazkaISBN) {
@@ -49,11 +91,10 @@ public class Ksiazka extends Publikacja {
 				ksiazka.getWydawca(), ksiazka.getISBN());
 	}
 
-	// wyswietlenie
-	public void printInfo() {
-		String info = getTytul() + "; " + getAutor() + "; " + getRokWydania() + "; " + getIloscStron() + "; "
-				+ getWydawca() + "; " + getISBN();
-		System.out.println(info);
+	@Override
+	public String toString() {
+		return getTytul() + "; " + getAutor() + "; " + getRokWydania() + "; " + getIloscStron() + "; " + getWydawca()
+				+ "; " + getISBN();
 	}
 
 }
