@@ -7,14 +7,6 @@ import utilis.DataReader;
 
 public class BibliotekaObsluga {
 
-	// stale do kontroli switcha
-
-	public static final int WYJDZ = 0;
-	public static final int DODAJ_KSIAZKE = 1;
-	public static final int DODAJ_MAGAZYN = 2;
-	public static final int WYSWIETL_KSIAZKI = 3;
-	public static final int WYSWIETL_MAGAZYNY = 4;
-
 	// zmienna do komunikacji z userem
 
 	private DataReader zczytywacz;
@@ -31,9 +23,9 @@ public class BibliotekaObsluga {
 	// główna pętla z opcjami i interakcją
 
 	public void petlaKontrolna() {
-		int opcja;
+		Opcje opcja;
 		wyswietlOpcje();
-		while ((opcja = zczytywacz.getInt()) != WYJDZ) {
+		while ((opcja = Opcje.utworzZInt(zczytywacz.getInt())) != Opcje.WYJDZ) {
 			switch (opcja) {
 			case DODAJ_KSIAZKE:
 				dodajKsiazki();
@@ -47,8 +39,8 @@ public class BibliotekaObsluga {
 			case WYSWIETL_MAGAZYNY:
 				wyswietlMagazyny();
 				break;
-			default:
-				System.out.println("Brak takiej opcji, wprowadź ponownie: ");
+			case WYJDZ:
+				;
 			}
 			wyswietlOpcje();
 		}
@@ -57,11 +49,9 @@ public class BibliotekaObsluga {
 
 	private void wyswietlOpcje() {
 		System.out.println("Wybierz opcję: ");
-		System.out.println("0 - wyjście z programu");
-		System.out.println("1 - dodanie nowej książki");
-		System.out.println("2 - dodanie nowego magazynu");
-		System.out.println("3 - wyświetl dostępne książki");
-		System.out.println("4 - wyświetl dostępne magazyny");
+		for (Opcje o : Opcje.values()) {
+			System.out.println(o);
+		}
 	}
 
 	private void dodajKsiazki() {
