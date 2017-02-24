@@ -1,8 +1,12 @@
 package app;
 
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
+
 import data.Biblioteka;
 import data.Ksiazka;
 import data.Magazyn;
+import utilis.BibliotekaUtilis;
 import utilis.DataReader;
 
 public class BibliotekaObsluga {
@@ -23,27 +27,35 @@ public class BibliotekaObsluga {
 	// główna pętla z opcjami i interakcją
 
 	public void petlaKontrolna() {
-		Opcje opcja;
-		wyswietlOpcje();
-		while ((opcja = Opcje.utworzZInt(zczytywacz.getInt())) != Opcje.WYJDZ) {
-			switch (opcja) {
-			case DODAJ_KSIAZKE:
-				dodajKsiazki();
-				break;
-			case DODAJ_MAGAZYN:
-				dodajMagazyn();
-				break;
-			case WYSWIETL_KSIAZKI:
-				wyswietlKsiazki();
-				break;
-			case WYSWIETL_MAGAZYNY:
-				wyswietlMagazyny();
-				break;
-			case WYJDZ:
-				;
+		Opcje opcja = null;
+		while ((opcja != Opcje.WYJDZ)) {
+			try {
+				wyswietlOpcje();
+				opcja = Opcje.utworzZInt(zczytywacz.getInt());
+				switch (opcja) {
+				case DODAJ_KSIAZKE:
+					dodajKsiazki();
+					break;
+				case DODAJ_MAGAZYN:
+					dodajMagazyn();
+					break;
+				case WYSWIETL_KSIAZKI:
+					wyswietlKsiazki();
+					break;
+				case WYSWIETL_MAGAZYNY:
+					wyswietlMagazyny();
+					break;
+				case WYJDZ:
+					;
+				}
+
+			} catch (InputMismatchException e) {
+				System.out.println("Wprowadzono niepoprawne dane, publikacji nie dodano");
+			} catch (NumberFormatException | NoSuchElementException e) {
+				System.out.println("Wybrana opcja nie istnieje, wybierz ponownie:");
 			}
-			wyswietlOpcje();
 		}
+		zczytywacz.zamknij();
 
 	}
 
@@ -65,11 +77,11 @@ public class BibliotekaObsluga {
 	}
 
 	private void wyswietlKsiazki() {
-		biblio.wyswietlKsiazki();
+		BibliotekaUtilis.wyswietlKsiazki(biblio);
 	}
 
 	private void wyswietlMagazyny() {
-		biblio.wyswietlMagazyny();
+		BibliotekaUtilis.wyswietlMagazyny(biblio);
 	}
 
 }
