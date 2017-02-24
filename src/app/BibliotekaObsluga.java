@@ -84,4 +84,34 @@ public class BibliotekaObsluga {
 		BibliotekaUtilis.wyswietlMagazyny(biblio);
 	}
 
+	private enum Opcje {
+		WYJDZ(0, "Wyjście z programu"), DODAJ_KSIAZKE(1, "Dodanie nowej książki"), DODAJ_MAGAZYN(2,
+				"Dodanie nowego magazynu"), WYSWIETL_KSIAZKI(3,
+						"Wyświetl dostępne książki"), WYSWIETL_MAGAZYNY(4, "Wyświetl dostępne magazyny");
+
+		private int wartosc;
+		private String opis;
+
+		Opcje(int wartosc, String opis) {
+			this.wartosc = wartosc;
+			this.opis = opis;
+		}
+
+		@Override
+		public String toString() {
+			return wartosc + " " + opis;
+		}
+
+		public static Opcje utworzZInt(int opcja) throws NoSuchElementException {
+			Opcje wynik = null;
+			try {
+				wynik = Opcje.values()[opcja];
+			} catch (ArrayIndexOutOfBoundsException e) {
+				throw new NoSuchElementException("Brak elementu o wskazanym ID");
+			}
+			return wynik;
+		}
+
+	}
+
 }
