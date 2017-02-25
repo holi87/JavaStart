@@ -1,5 +1,7 @@
 package utilis;
 
+import java.util.Arrays;
+
 import data.Biblioteka;
 import data.Ksiazka;
 import data.Magazyn;
@@ -8,6 +10,7 @@ import data.Publikacja;
 public class BibliotekaUtilis {
 	public static void wyswietlKsiazki(Biblioteka bib) {
 		Publikacja[] publikacja = bib.getPublikacje();
+		Arrays.sort(publikacja, new Biblioteka.AlfabetycznyKomparator());
 		int numerPublikacji = bib.getNumerPublikacji();
 		int liczKsiazki = 0;
 
@@ -24,6 +27,7 @@ public class BibliotekaUtilis {
 
 	public static void wyswietlMagazyny(Biblioteka bib) {
 		Publikacja[] publikacja = bib.getPublikacje();
+		Arrays.sort(publikacja, new Biblioteka.AlfabetycznyKomparator());
 		int numerPublikacji = bib.getNumerPublikacji();
 		int liczMagazyny = 0;
 
