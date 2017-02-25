@@ -1,44 +1,48 @@
 package utilis;
 
-import java.util.Arrays;
+import java.util.Collection;
 
 import data.Biblioteka;
+import data.BibliotekaSzkodnikow;
 import data.Ksiazka;
 import data.Magazyn;
 import data.Publikacja;
 
 public class BibliotekaUtilis {
 	public static void wyswietlKsiazki(Biblioteka bib) {
-		Publikacja[] publikacja = bib.getPublikacje();
-		Arrays.sort(publikacja, new Biblioteka.AlfabetycznyKomparator());
-		int numerPublikacji = bib.getNumerPublikacji();
+		Collection<Publikacja> publikacje = bib.getPublikacje().values();
 		int liczKsiazki = 0;
-
-		for (int i = 0; i < numerPublikacji; i++) {
-			if (publikacja[i] instanceof Ksiazka) {
-				System.out.println(publikacja[i]);
+		for (Publikacja p : publikacje) {
+			if (p instanceof Ksiazka) {
+				System.out.println(p);
 				liczKsiazki++;
 			}
 		}
+
 		if (liczKsiazki == 0) {
-			System.out.println("Brak ksiażek w bibliotece");
+			System.out.println("Brak książek w bibliotece");
 		}
 	}
 
 	public static void wyswietlMagazyny(Biblioteka bib) {
-		Publikacja[] publikacja = bib.getPublikacje();
-		Arrays.sort(publikacja, new Biblioteka.AlfabetycznyKomparator());
-		int numerPublikacji = bib.getNumerPublikacji();
+		Collection<Publikacja> publikacje = bib.getPublikacje().values();
 		int liczMagazyny = 0;
-
-		for (int i = 0; i < numerPublikacji; i++) {
-			if (publikacja[i] instanceof Magazyn) {
-				System.out.println(publikacja[i]);
+		for (Publikacja p : publikacje) {
+			if (p instanceof Magazyn) {
+				System.out.println(p);
 				liczMagazyny++;
 			}
 		}
+
 		if (liczMagazyny == 0) {
 			System.out.println("Brak magazynów w bibliotece");
+		}
+	}
+
+	public static void wyswietlSzkodniki(Biblioteka bib) {
+		Collection<BibliotekaSzkodnikow> szkodniki = bib.getSzkodnik().values();
+		for (BibliotekaSzkodnikow s : szkodniki) {
+			System.out.println(s);
 		}
 	}
 }

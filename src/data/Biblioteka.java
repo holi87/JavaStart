@@ -1,8 +1,9 @@
 package data;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Biblioteka implements Serializable {
 
@@ -13,14 +14,13 @@ public class Biblioteka implements Serializable {
 
 	public static final int POCZATKOWA_WARTOSC = 1;
 
-	private Publikacja[] publikacje;
-	private int numerPublikacji;
+	private Map<String, Publikacja> publikacje;
+	private Map<String, BibliotekaSzkodnikow> szkodniki;
 
 	public static class AlfabetycznyKomparator implements Comparator<Publikacja> {
 
 		@Override
 		public int compare(Publikacja o1, Publikacja o2) {
-			// TODO Auto-generated method stub
 			if (o1 == null && o2 == null) {
 				return 0;
 			}
@@ -37,7 +37,6 @@ public class Biblioteka implements Serializable {
 	public static class DatowyKopmarator implements Comparator<Publikacja> {
 		@Override
 		public int compare(Publikacja o1, Publikacja o2) {
-			// TODO Auto-generated method stub
 			if (o1 == null && o2 == null) {
 				return 0;
 			}
@@ -54,46 +53,34 @@ public class Biblioteka implements Serializable {
 	}
 
 	public int getNumerPublikacji() {
-		return numerPublikacji;
+		return publikacje.size();
 	}
 
-	public Publikacja[] getPublikacje() {
+	public Map<String, Publikacja> getPublikacje() {
 		return publikacje;
 	}
 
+	public Map<String, BibliotekaSzkodnikow> getSzkodnik() {
+		return szkodniki;
+	}
+
 	public Biblioteka() {
-		publikacje = new Publikacja[POCZATKOWA_WARTOSC];
+		publikacje = new HashMap<>();
+		szkodniki = new HashMap<>();
+	}
+
+	public void dodajSzkodnika(BibliotekaSzkodnikow szkodnik) {
+		szkodniki.put(szkodnik.getPesel(), szkodnik);
 	}
 
 	public void usunPublikacje(Publikacja publikacja) {
-		if (publikacja == null) {
-			return;
-		}
-
-		final int NIE_ZNALEZIONE = -1;
-		int znalezione = NIE_ZNALEZIONE;
-		int i = 0;
-		while (i < publikacje.length && znalezione == NIE_ZNALEZIONE) {
-			if (publikacja.equals(publikacje[i])) {
-				znalezione = i;
-			} else {
-				i++;
-			}
-		}
-
-		if (znalezione != NIE_ZNALEZIONE) {
-			System.arraycopy(publikacje, znalezione + 1, publikacje, znalezione, publikacje.length - 1);
-			numerPublikacji--;
+		if (publikacje.containsValue(publikacja)) {
+			publikacje.remove(publikacja.getTytul());
 		}
 	}
 
 	public void dodajPublikacje(Publikacja publikacja) {
-		if (numerPublikacji == publikacje.length) {
-			publikacje = Arrays.copyOf(publikacje, publikacje.length * 2);
-		} else {
-			publikacje[numerPublikacji] = publikacja;
-			numerPublikacji++;
-		}
+		publikacje.put(publikacja.getTytul(), publikacja);
 	}
 
 	public void dodajKsiazke(Ksiazka ksiazka) {
@@ -103,6 +90,16 @@ public class Biblioteka implements Serializable {
 
 	public void dodajMagazyn(Magazyn magazyn) {
 		dodajPublikacje(magazyn);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		for (Publikacja p : publikacje.values()) {
+			builder.append(p);
+			builder.append("\n");
+		}
+		return builder.toString();
 	}
 
 }

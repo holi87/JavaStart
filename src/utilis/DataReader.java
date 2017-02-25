@@ -3,6 +3,7 @@ package utilis;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import data.BibliotekaSzkodnikow;
 import data.Ksiazka;
 import data.Magazyn;
 
@@ -82,4 +83,16 @@ public class DataReader {
 
 		return new Magazyn(tytul, wydawca, jezyk, rokWydania, miesiacWydania, dzienWydania);
 	}
+
+	public BibliotekaSzkodnikow zczytajOrazStworzSzkodnika() {
+		System.out.println("Imię: ");
+		String imie = czytaj.nextLine();
+		System.out.println("Nazwisko: ");
+		String nazwisko = czytaj.nextLine();
+		System.out.println("PESEL: ");
+		String pesel = czytaj.nextLine();
+
+		return new BibliotekaSzkodnikow(imie, nazwisko, pesel);
+	}
+
 }
