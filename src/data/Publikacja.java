@@ -1,6 +1,12 @@
 package data;
 
-public class Publikacja {
+import java.io.Serializable;
+
+public class Publikacja implements Serializable {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -2742749806169492138L;
 	private int rokWydania;
 	private String tytul;
 	private String wydawca;

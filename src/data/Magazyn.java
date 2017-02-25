@@ -1,6 +1,10 @@
 package data;
 
 public class Magazyn extends Publikacja {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -8146517503851993887L;
 	private int miesiacWydania;
 	private int dzienWydania;
 	private String jezyk;

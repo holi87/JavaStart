@@ -3,6 +3,10 @@ package data;
 public class Ksiazka extends Publikacja {
 	// zmienne
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -6290879336174551600L;
 	private String autor;
 	private int iloscStron;
 	private String isbn;

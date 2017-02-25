@@ -1,6 +1,13 @@
 package data;
 
-public class Biblioteka {
+import java.io.Serializable;
+
+public class Biblioteka implements Serializable {
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 7141279408104924077L;
 
 	public static final int MAX_PUBLIKACJI = 2000;
 
