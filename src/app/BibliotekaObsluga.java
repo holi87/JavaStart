@@ -56,6 +56,7 @@ public class BibliotekaObsluga {
 					wyswietlMagazyny();
 					break;
 				case WYJDZ:
+					wyjdz();
 					;
 				}
 
@@ -92,6 +93,10 @@ public class BibliotekaObsluga {
 
 	private void wyswietlMagazyny() {
 		BibliotekaUtilis.wyswietlMagazyny(biblio);
+	}
+
+	private void wyjdz() {
+		plik.zapiszBibliotekeDoPliku(biblio);
 	}
 
 	private enum Opcje {
