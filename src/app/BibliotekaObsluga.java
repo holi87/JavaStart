@@ -1,5 +1,6 @@
 package app;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
@@ -8,12 +9,14 @@ import data.Ksiazka;
 import data.Magazyn;
 import utilis.BibliotekaUtilis;
 import utilis.DataReader;
+import utilis.ManagerPlikow;
 
 public class BibliotekaObsluga {
 
 	// zmienna do komunikacji z userem
 
 	private DataReader zczytywacz;
+	private ManagerPlikow plik;
 
 	// biblioteka z danymi
 
@@ -21,7 +24,14 @@ public class BibliotekaObsluga {
 
 	public BibliotekaObsluga() {
 		zczytywacz = new DataReader();
-		biblio = new Biblioteka();
+		plik = new ManagerPlikow();
+		try {
+			biblio = plik.czytajBibliotekeZPliku();
+			System.out.println("Wczytano dane biblioteki z pliku ");
+		} catch (ClassNotFoundException | IOException e) {
+			biblio = new Biblioteka();
+			System.out.println("Utworzono nową bazę biblioteki.");
+		}
 	}
 
 	// główna pętla z opcjami i interakcją
