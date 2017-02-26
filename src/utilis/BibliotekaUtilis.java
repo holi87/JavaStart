@@ -1,6 +1,9 @@
 package utilis;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import data.Biblioteka;
 import data.BibliotekaSzkodnikow;
@@ -10,7 +13,9 @@ import data.Publikacja;
 
 public class BibliotekaUtilis {
 	public static void wyswietlKsiazki(Biblioteka bib) {
-		Collection<Publikacja> publikacje = bib.getPublikacje().values();
+		List<Publikacja> publikacje = new ArrayList<>();
+		publikacje.addAll(bib.getPublikacje().values());
+		Collections.sort(publikacje, new Biblioteka.AlfabetycznyKomparator());
 		int liczKsiazki = 0;
 		for (Publikacja p : publikacje) {
 			if (p instanceof Ksiazka) {
@@ -25,7 +30,10 @@ public class BibliotekaUtilis {
 	}
 
 	public static void wyswietlMagazyny(Biblioteka bib) {
-		Collection<Publikacja> publikacje = bib.getPublikacje().values();
+		List<Publikacja> publikacje = new ArrayList<>();
+		publikacje.addAll(bib.getPublikacje().values());
+		Collections.sort(publikacje, new Biblioteka.AlfabetycznyKomparator());
+
 		int liczMagazyny = 0;
 		for (Publikacja p : publikacje) {
 			if (p instanceof Magazyn) {
@@ -40,7 +48,15 @@ public class BibliotekaUtilis {
 	}
 
 	public static void wyswietlSzkodniki(Biblioteka bib) {
-		Collection<BibliotekaSzkodnikow> szkodniki = bib.getSzkodnik().values();
+		List<BibliotekaSzkodnikow> szkodniki = new ArrayList<>();
+		szkodniki.addAll(bib.getSzkodnik().values());
+
+		Collections.sort(szkodniki, new Comparator<BibliotekaSzkodnikow>() {
+			@Override
+			public int compare(BibliotekaSzkodnikow o1, BibliotekaSzkodnikow o2) {
+				return o1.getNazwisko().compareTo(o2.getNazwisko());
+			}
+		});
 		for (BibliotekaSzkodnikow s : szkodniki) {
 			System.out.println(s);
 		}
